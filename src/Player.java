@@ -6,9 +6,11 @@ public class Player {
     private String playerName;
     private String charName;
     private Scanner input = new Scanner(System.in);
+    private Inventory inventory;
 
     public Player(String playerName) {
         this.playerName = playerName;
+        this.inventory = new Inventory();
     }
     public void selectChar(){
         GameCharacter[] CharList = {new Samurai(),new Archer(),new Knight()};
@@ -37,9 +39,6 @@ public class Player {
             default:
                 System.out.println("Lütfen geçerli bir karakter seçiniz.");
         }
-        System.out.println("Karakteriniz : " + this.getCharName() + " Hasarınız : " +
-                this.getDamage() + " Sağlık değeriniz : " + this.getHealth() +
-                " Paranız : " + this.getMoney());
     }
     public void initPlayer(GameCharacter gameCharacter){
         this.setCharName(gameCharacter.getName());
@@ -47,9 +46,16 @@ public class Player {
         this.setHealth(gameCharacter.getHealth());
         this.setMoney(gameCharacter.getMoney());
     }
+    public void printInfo(){
+        System.out.println("Karakteriniz : " + this.getCharName() +
+                ", Silahınız : " + this.getInventory().getWeapon().getName() +
+                ", Hasarınız : " + this.getDamage() +
+                ", Sağlık değeriniz : " + this.getHealth() +
+                ", Paranız : " + this.getMoney());
+    }
 
     public int getDamage() {
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage) {
@@ -86,5 +92,13 @@ public class Player {
 
     public void setCharName(String charName) {
         this.charName = charName;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
