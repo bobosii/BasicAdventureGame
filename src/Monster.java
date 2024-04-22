@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Monster {
     private int ID;
     private String name;
@@ -40,6 +42,7 @@ public class Monster {
         return health;
     }
 
+
     public void setHealth(int health) {
         this.health = health;
     }
@@ -66,5 +69,10 @@ public class Monster {
 
     public void setOriginalHealth(int originalHealth) {
         this.originalHealth = originalHealth;
+    }
+
+    public int randomSnakeDamage(){
+        Random r = new Random();
+        return r.nextInt(3) + 3;
     }
 }

@@ -7,6 +7,7 @@ public class Player {
     private String charName;
     private Scanner input = new Scanner(System.in);
     private Inventory inventory;
+    private int originalHealth;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -44,6 +45,7 @@ public class Player {
         this.setCharName(gameCharacter.getName());
         this.setDamage(gameCharacter.getDamage());
         this.setHealth(gameCharacter.getHealth());
+        this.setOriginalHealth(gameCharacter.getHealth());
         this.setMoney(gameCharacter.getMoney());
     }
     public void printInfo(){
@@ -104,5 +106,13 @@ public class Player {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public int getOriginalHealth() {
+        return originalHealth;
+    }
+
+    public void setOriginalHealth(int originalHealth) {
+        this.originalHealth = originalHealth;
     }
 }
